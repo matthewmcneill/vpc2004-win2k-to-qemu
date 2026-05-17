@@ -1,0 +1,36 @@
+FROM debian:bookworm-slim
+
+# Install all tools needed for offline Windows VM surgery
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    qemu-utils \
+    nbd-client \
+    ntfs-3g \
+    libhivex-bin \
+    chntpw \
+    bash \
+    coreutils \
+    file \
+    grep \
+    sed \
+    gawk \
+    util-linux \
+    kmod \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
+# Create mount point
+RUN mkdir -p /mnt/win2k
+
+# Copy surgery scripts
+COPY mount_vm.sh unmount_vm.sh \
+     fix_ide_controller.sh fix_filter_drivers.sh \
+     fix_hal.sh fix_bootini.sh \
+     /scripts/
+
+COPY registry/ /scripts/registry/
+
+RUN chmod +x /scripts/*.sh
+
+WORKDIR /workspace
+
+ENTRYPOINT ["/bin/bash"]

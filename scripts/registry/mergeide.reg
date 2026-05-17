@@ -1,0 +1,209 @@
+Windows Registry Editor Version 5.00
+
+; MergeIDE — Comprehensive IDE controller registry patch for V2V migration
+; Source: Microsoft KB 314082 (https://mskb.pkisolutions.com/kb/314082)
+; Adapted for offline application via hivexregedit.
+;
+; Placeholders:
+;   __CONTROLSET__ = replaced at runtime with active ControlSet (e.g. ControlSet001)
+;   HKEY_LOCAL_MACHINE\SYSTEM\ prefix stripped for hivexregedit hive-relative paths
+;
+; The fix_ide_controller.sh script handles ControlSet detection and placeholder substitution.
+
+; ====================================================================
+; CriticalDeviceDatabase entries
+; ====================================================================
+
+; --- Standard IDE ATA/ATAPI Channels ---
+
+[__CONTROLSET__\Control\CriticalDeviceDatabase\primary_ide_channel]
+"ClassGUID"="{4D36E96A-E325-11CE-BFC1-08002BE10318}"
+"Service"="atapi"
+
+[__CONTROLSET__\Control\CriticalDeviceDatabase\secondary_ide_channel]
+"ClassGUID"="{4D36E96A-E325-11CE-BFC1-08002BE10318}"
+"Service"="atapi"
+
+[__CONTROLSET__\Control\CriticalDeviceDatabase\*pnp0600]
+"ClassGUID"="{4D36E96A-E325-11CE-BFC1-08002BE10318}"
+"Service"="atapi"
+
+; --- Aztech IDE Controller ---
+[__CONTROLSET__\Control\CriticalDeviceDatabase\*azt0502]
+"ClassGUID"="{4D36E96A-E325-11CE-BFC1-08002BE10318}"
+"Service"="atapi"
+
+; --- Generic Disk ---
+[__CONTROLSET__\Control\CriticalDeviceDatabase\gendisk]
+"ClassGUID"="{4D36E967-E325-11CE-BFC1-08002BE10318}"
+"Service"="disk"
+
+; --- Generic Dual PCI IDE (class code match) ---
+[__CONTROLSET__\Control\CriticalDeviceDatabase\pci#cc_0101]
+"ClassGUID"="{4D36E96A-E325-11CE-BFC1-08002BE10318}"
+"Service"="pciide"
+
+; --- Compaq ---
+[__CONTROLSET__\Control\CriticalDeviceDatabase\pci#ven_0e11&dev_ae33]
+"ClassGUID"="{4D36E96A-E325-11CE-BFC1-08002BE10318}"
+"Service"="pciide"
+
+; --- Silicon Integrated System ---
+[__CONTROLSET__\Control\CriticalDeviceDatabase\pci#ven_1039&dev_0601]
+"ClassGUID"="{4D36E96A-E325-11CE-BFC1-08002BE10318}"
+"Service"="pciide"
+
+[__CONTROLSET__\Control\CriticalDeviceDatabase\pci#ven_1039&dev_5513]
+"ClassGUID"="{4D36E96A-E325-11CE-BFC1-08002BE10318}"
+"Service"="pciide"
+
+; --- PC Technology ---
+[__CONTROLSET__\Control\CriticalDeviceDatabase\pci#ven_1042&dev_1000]
+"ClassGUID"="{4D36E96A-E325-11CE-BFC1-08002BE10318}"
+"Service"="pciide"
+
+; --- Promise Technology ---
+[__CONTROLSET__\Control\CriticalDeviceDatabase\pci#ven_105a&dev_4d33]
+"ClassGUID"="{4D36E96A-E325-11CE-BFC1-08002BE10318}"
+"Service"="pciide"
+
+; --- CMD Technology ---
+[__CONTROLSET__\Control\CriticalDeviceDatabase\pci#ven_1095&dev_0640]
+"ClassGUID"="{4D36E96A-E325-11CE-BFC1-08002BE10318}"
+"Service"="pciide"
+
+[__CONTROLSET__\Control\CriticalDeviceDatabase\pci#ven_1095&dev_0646]
+"ClassGUID"="{4D36E96A-E325-11CE-BFC1-08002BE10318}"
+"Service"="pciide"
+
+[__CONTROLSET__\Control\CriticalDeviceDatabase\pci#ven_1095&dev_0646&REV_05]
+"ClassGUID"="{4D36E96A-E325-11CE-BFC1-08002BE10318}"
+"Service"="pciide"
+
+[__CONTROLSET__\Control\CriticalDeviceDatabase\pci#ven_1095&dev_0646&REV_07]
+"ClassGUID"="{4D36E96A-E325-11CE-BFC1-08002BE10318}"
+"Service"="pciide"
+
+[__CONTROLSET__\Control\CriticalDeviceDatabase\pci#ven_1095&dev_0648]
+"ClassGUID"="{4D36E96A-E325-11CE-BFC1-08002BE10318}"
+"Service"="pciide"
+
+[__CONTROLSET__\Control\CriticalDeviceDatabase\pci#ven_1095&dev_0649]
+"ClassGUID"="{4D36E96A-E325-11CE-BFC1-08002BE10318}"
+"Service"="pciide"
+
+; --- Appian Technology ---
+[__CONTROLSET__\Control\CriticalDeviceDatabase\pci#ven_1097&dev_0038]
+"ClassGUID"="{4D36E96A-E325-11CE-BFC1-08002BE10318}"
+"Service"="pciide"
+
+; --- Symphony Labs ---
+[__CONTROLSET__\Control\CriticalDeviceDatabase\pci#ven_10ad&dev_0001]
+"ClassGUID"="{4D36E96A-E325-11CE-BFC1-08002BE10318}"
+"Service"="pciide"
+
+[__CONTROLSET__\Control\CriticalDeviceDatabase\pci#ven_10ad&dev_0150]
+"ClassGUID"="{4D36E96A-E325-11CE-BFC1-08002BE10318}"
+"Service"="pciide"
+
+; --- ALI IDE Controller ---
+[__CONTROLSET__\Control\CriticalDeviceDatabase\pci#ven_10b9&dev_5215]
+"ClassGUID"="{4D36E96A-E325-11CE-BFC1-08002BE10318}"
+"Service"="pciide"
+
+[__CONTROLSET__\Control\CriticalDeviceDatabase\pci#ven_10b9&dev_5219]
+"ClassGUID"="{4D36E96A-E325-11CE-BFC1-08002BE10318}"
+"Service"="pciide"
+
+[__CONTROLSET__\Control\CriticalDeviceDatabase\pci#ven_10b9&dev_5229]
+"ClassGUID"="{4D36E96A-E325-11CE-BFC1-08002BE10318}"
+"Service"="pciide"
+
+; --- Standard Microsystems Corp ---
+[__CONTROLSET__\Control\CriticalDeviceDatabase\pci#ven_1055&dev_9130]
+"ClassGUID"="{4D36E96A-E325-11CE-BFC1-08002BE10318}"
+"Service"="pciide"
+
+; --- VIA Technologies ---
+[__CONTROLSET__\Control\CriticalDeviceDatabase\pci#ven_1106&dev_0571]
+"Service"="pciide"
+"ClassGUID"="{4D36E96A-E325-11CE-BFC1-08002BE10318}"
+
+; --- Toshiba ---
+[__CONTROLSET__\Control\CriticalDeviceDatabase\pci#ven_1179&dev_0105]
+"ClassGUID"="{4D36E96A-E325-11CE-BFC1-08002BE10318}"
+"Service"="pciide"
+
+; --- Intel (includes PIIX3 7010 and PIIX4 7111 — the critical QEMU/VPC entries) ---
+[__CONTROLSET__\Control\CriticalDeviceDatabase\pci#ven_8086&dev_1222]
+"ClassGUID"="{4D36E96A-E325-11CE-BFC1-08002BE10318}"
+"Service"="intelide"
+
+[__CONTROLSET__\Control\CriticalDeviceDatabase\pci#ven_8086&dev_1230]
+"ClassGUID"="{4D36E96A-E325-11CE-BFC1-08002BE10318}"
+"Service"="intelide"
+
+[__CONTROLSET__\Control\CriticalDeviceDatabase\pci#ven_8086&dev_2411]
+"ClassGUID"="{4D36E96A-E325-11CE-BFC1-08002BE10318}"
+"Service"="intelide"
+
+[__CONTROLSET__\Control\CriticalDeviceDatabase\pci#ven_8086&dev_2421]
+"ClassGUID"="{4D36E96A-E325-11CE-BFC1-08002BE10318}"
+"Service"="intelide"
+
+[__CONTROLSET__\Control\CriticalDeviceDatabase\pci#ven_8086&dev_7010]
+"ClassGUID"="{4D36E96A-E325-11CE-BFC1-08002BE10318}"
+"Service"="intelide"
+
+[__CONTROLSET__\Control\CriticalDeviceDatabase\pci#ven_8086&dev_7111]
+"ClassGUID"="{4D36E96A-E325-11CE-BFC1-08002BE10318}"
+"Service"="intelide"
+
+[__CONTROLSET__\Control\CriticalDeviceDatabase\pci#ven_8086&dev_7199]
+"ClassGUID"="{4D36E96A-E325-11CE-BFC1-08002BE10318}"
+"Service"="intelide"
+
+[__CONTROLSET__\Control\CriticalDeviceDatabase\pci#ven_8086&dev_244a]
+"ClassGUID"="{4D36E96A-E325-11CE-BFC1-08002BE10318}"
+"Service"="intelide"
+
+[__CONTROLSET__\Control\CriticalDeviceDatabase\pci#ven_8086&dev_244b]
+"ClassGUID"="{4D36E96A-E325-11CE-BFC1-08002BE10318}"
+"Service"="intelide"
+
+[__CONTROLSET__\Control\CriticalDeviceDatabase\pci#ven_8086&dev_248a]
+"ClassGUID"="{4D36E96A-E325-11CE-BFC1-08002BE10318}"
+"Service"="intelide"
+
+[__CONTROLSET__\Control\CriticalDeviceDatabase\pci#ven_8086&dev_7601]
+"ClassGUID"="{4D36E96A-E325-11CE-BFC1-08002BE10318}"
+"Service"="intelide"
+
+; ====================================================================
+; Service driver entries (ensure boot-start with correct metadata)
+; ====================================================================
+
+; --- Atapi driver (requires atapi.sys in drivers directory) ---
+[__CONTROLSET__\Services\atapi]
+"ErrorControl"=dword:00000001
+"Group"="SCSI miniport"
+"Start"=dword:00000000
+"Tag"=dword:00000019
+"Type"=dword:00000001
+"DisplayName"="Standard IDE/ESDI Hard Disk Controller"
+
+; --- IntelIde driver (requires intelide.sys in drivers directory) ---
+[__CONTROLSET__\Services\IntelIde]
+"ErrorControl"=dword:00000001
+"Group"="System Bus Extender"
+"Start"=dword:00000000
+"Tag"=dword:00000004
+"Type"=dword:00000001
+
+; --- PCIIde driver (requires pciide.sys and pciidex.sys in drivers directory) ---
+[__CONTROLSET__\Services\PCIIde]
+"ErrorControl"=dword:00000001
+"Group"="System Bus Extender"
+"Start"=dword:00000000
+"Tag"=dword:00000003
+"Type"=dword:00000001
